@@ -1,15 +1,17 @@
 window.onload = function() {    
   //The initial setup
-  var gameBoard = [ 
-    [  0,  1,  0,  1,  0,  1,  0,  1 ],
-    [  1,  0,  1,  0,  1,  0,  1,  0 ],
-    [  0,  1,  0,  1,  0,  1,  0,  1 ],
-    [  0,  0,  0,  0,  0,  0,  0,  0 ],
-    [  0,  0,  0,  0,  0,  0,  0,  0 ],
-    [  2,  0,  2,  0,  2,  0,  2,  0 ],
-    [  0,  2,  0,  2,  0,  2,  0,  2 ],
-    [  2,  0,  2,  0,  2,  0,  2,  0 ]
-  ];
+
+    var gameBoard = [
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 3],
+        [2, 0, 2, 0, 2, 0, 2, 0],
+        [0, 2, 0, 2, 0, 2, 0, 2],
+        [2, 0, 2, 0, 2, 0, 2, 0]
+    ];
+    
   //arrays to store the instances
   var pieces = [];
   var tiles = []; 
@@ -226,9 +228,12 @@ window.onload = function() {
   
   //reset game when clear button is pressed
   $('#cleargame').on("click", function () {
-    Board.clear();
+      var boardCheck = Math.random() >= 0.5;
+      if (boardCheck) {
+          Board.clear();
+      }
   });
-  
+ 
   //move piece when tile is clicked
   $('.tile').on("click", function () {
     //make sure a piece is selected
